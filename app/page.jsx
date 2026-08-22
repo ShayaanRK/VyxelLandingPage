@@ -12,6 +12,12 @@ const CloseIcon = ({ size = 20 }) => <Icon size={size}><path d="m6 6 12 12M18 6 
 const ArrowIcon = ({ size = 18 }) => <Icon size={size}><path d="M5 12h14M13 6l6 6-6 6" /></Icon>;
 const PlayIcon = ({ size = 20 }) => <Icon size={size}><circle cx="12" cy="12" r="10" /><path d="m10 8 5 4-5 4z" fill="currentColor" stroke="none" /></Icon>;
 const CheckIcon = ({ size = 18 }) => <Icon size={size}><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></Icon>;
+const PriceCheckIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>
+);
 const SparkleIcon = ({ size = 22 }) => <Icon size={size}><path d="m12 3-1.3 5.2a3 3 0 0 1-2.2 2.2L3 12l5.5 1.6a3 3 0 0 1 2.2 2.2L12 21l1.3-5.2a3 3 0 0 1 2.2-2.2L21 12l-5.5-1.6a3 3 0 0 1-2.2-2.2z" /></Icon>;
 const UsersIcon = ({ size = 22 }) => <Icon size={size}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.1a4 4 0 0 1 0 7.8M22 21v-2a4 4 0 0 0-3-3.9M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></Icon>;
 const IconChartColumn = ({ size = 22 }) => (
@@ -77,9 +83,9 @@ const FEATURES = [
 ];
 
 const PRICING_PLANS = [
-  { name: "Starter", blurb: "Perfect for small consultancies", price: "$59", features: ["3 users included", "Lead management", "Student pipeline", "Follow-up reminders", "Document management", "Mobile app", "Extra users @ $12/user/month"] },
-  { name: "Growth", blurb: "For growing agencies", price: "$119", badge: "Most Popular", features: ["10 users included", "Call logging", "Call recording", "WhatsApp integration", "Counselor dashboards", "Extra users @ $10/user/month"] },
-  { name: "Elite", blurb: "For large agencies", price: "$239", features: ["25 users included", "AI call summaries", "AI lead scoring", "Automation workflows", "Advanced analytics", "Multi-branch support", "Extra users @ $9/user/month"] },
+  { name: "Starter", blurb: "Perfect for small consultancies", price: "₹4,999", features: ["3 users included", "Lead management", "Student pipeline", "Follow-up reminders", "Document management", "Mobile app", "Extra users @ $12/user/month"] },
+  { name: "Growth", blurb: "For growing agencies", price: "₹9,999", badge: "Most Popular", features: ["10 users included", "Call logging", "Call recording", "WhatsApp integration", "Counselor dashboards", "Extra users @ $10/user/month"] },
+  { name: "Elite", blurb: "For large agencies", price: "₹19,999", features: ["25 users included", "AI call summaries", "AI lead scoring", "Automation workflows", "Advanced analytics", "Multi-branch support", "Extra users @ $9/user/month"] },
 ];
 
 const BENEFITS = [
@@ -199,14 +205,9 @@ export default function VyxelLandingPage() {
           </div>
 
           <Reveal className="mb-20">
-            <div className="relative overflow-hidden border-0 shadow-2xl rounded-3xl bg-slate-100 inline-block w-full">
-              <img
-                src="/dashboard-preview.png"
-                alt="Dashboard Interface Preview"
-                width="1200"
-                height="675"
-                className="block w-full h-auto rounded-3xl"
-              />
+            <div class="wrapper">
+              <div class="image-hover-wrapper">
+                <img src="/new_dashboard.png" alt="Dashboard Interface Preview" width="1" height="1" className="block w-full h-auto rounded-3xl" /></div>
             </div>
           </Reveal>
 
@@ -249,6 +250,25 @@ export default function VyxelLandingPage() {
         </div>
       </section>
 
+      <section id="pricing" className="pricing-section section-grid"><Reveal direction="left" className="flex items-center gap-2 mb-6">
+        <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
+          <BarChart3 className="w-4 h-4" size={16} style={{ color: "#f87516" }} />
+        </div>
+        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#f87516" }}>
+          PRICING
+        </span>
+      </Reveal><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Simple plans.<br /><em>Built to scale.</em></h2><p className="section-copy">Choose the perfect plan that scales with your business. No hidden fees, cancel anytime.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.badge ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><PriceCheckIcon />{feature}</li>)}</ul></Reveal>)}</div>
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <button className="group flex items-center gap-2 font-bold transition-all" style={{ color: "var(--primary)" }}>
+            Compare all features
+            <span className="transition-transform group-hover:translate-x-2">→</span>
+          </button>
+          <p className="text-xs font-medium uppercase tracking-widest opacity-40">
+            Secure checkout powered by Stripe
+          </p>
+        </div>
+      </section>
+
       <section className="benefits-section section-grid">
         <Reveal direction="left" className="flex items-center gap-2 mb-6">
           <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
@@ -259,8 +279,8 @@ export default function VyxelLandingPage() {
           </span>
         </Reveal>
         <Reveal>
-          <div className="eyebrow">Why consultancies choose Vyxel</div>
-          <h2>Everything you need to<br /><em>grow with confidence.</em></h2>
+          <div className="eyebrow">Everything you need to grow with confidence.</div>
+          <h2>Why leading consultancies <em>choose Vyxel.</em></h2>
           <p className="section-copy">Powerful tools, thoughtful automation, and the visibility your team needs to create better student outcomes.</p>
         </Reveal>
         <div className="benefit-grid">{BENEFITS.map((benefit, index) => {
@@ -268,9 +288,7 @@ export default function VyxelLandingPage() {
           return <Reveal delay={index * 70} className="benefit-card" key={benefit.title}><div className="benefit-icon"><BenefitIcon /></div><h3>{benefit.title}</h3><p>{benefit.desc}</p><strong>{benefit.stat}</strong></Reveal>;
         })}</div></section>
 
-      <section id="pricing" className="pricing-section section-grid"><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Why leading consultancies<br /><em>Choose Vyxel</em></h2><p className="section-copy">Get full access for 14 days with no credit card required. Choose the plan that fits your consultancy and grow without added complexity.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.highlighted ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><CheckIcon />{feature}</li>)}</ul></Reveal>)}</div></section>
-
-      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="#pricing">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
+      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="https://vyxel.digi-wire.com/inquiry">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
           <span>Start your free trial today</span>
@@ -285,19 +303,27 @@ export default function VyxelLandingPage() {
         </div>
       </div></section>
 
-      <section id="faq" className="faq-section section-grid"><div className="faq-intro"><Reveal><div className="eyebrow">Questions, answered</div><h2>Everything you need<br /><em>to get started.</em></h2><p className="section-copy">Still curious? <a href="#contact">Talk to our team <ArrowIcon /></a></p></Reveal></div><div className="faq-list">{FAQS.map((faq, index) => <Reveal key={faq.q} delay={index * 60} className={`faq-item ${openFaq === index ? "is-open" : ""}`}><button onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>{faq.q}</span><span className="faq-plus">+</span></button><div className="faq-answer"><p>{faq.a}</p></div></Reveal>)}</div></section>
+      <section id="faq" className="faq-section section-grid">
+        <Reveal direction="up" className="flex items-center gap-2 mb-6">
+          <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
+            <BarChart3 className="w-4 h-4" size={16} style={{ color: "#f87516" }} />
+          </div>
+          <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#f87516" }}>
+            FAQ
+          </span>
+        </Reveal><div className="faq-intro"><Reveal><div className="eyebrow">Answers, without the fine print.</div><h2>Got questions?<br /><em>We've got answers.</em></h2><p className="section-copy">Everything you need to know - <a href="https://vyxel.digi-wire.com/inquiry">Talk to our team <ArrowIcon /></a></p></Reveal></div><div className="faq-list">{FAQS.map((faq, index) => <Reveal key={faq.q} delay={index * 60} className={`faq-item ${openFaq === index ? "is-open" : ""}`}><button onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>{faq.q}</span><span className="faq-plus">+</span></button><div className="faq-answer"><p>{faq.a}</p></div></Reveal>)}</div></section>
     </main>
 
     <footer className="footer"><div className="footer-inner"><div><img src="/vyxel_logo_black.png" alt="Logo" style={{ height: "70px", width: "auto" }} /><p>AI-powered CRM for consultancies<br />that care about student success.</p><SocialLinks /></div><div className="footer-links">
       <div><b>PRODUCT</b>
-        <a href="#features">Features</a>
+        <a href="https://vyxel.digi-wire.com/features">Features</a>
         <a href="#pricing">Pricing</a>
-        <a href="#contact">Product</a>
+        <a href="https://vyxel.digi-wire.com/inquiry">Product</a>
       </div>
       <div><b>LEGAL</b>
-        <a href="#features">Privacy Policy</a>
-        <a href="#features">Terms Of Service</a>
-        <a href="#features">Refund Policy</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
+        <a href="https://vyxel.digi-wire.com/privacy">Privacy Policy</a>
+        <a href="https://vyxel.digi-wire.com/terms">Terms Of Service</a>
+        <a href="https://vyxel.digi-wire.com/refund">Refund Policy</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
     {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
   </div>;
 }
