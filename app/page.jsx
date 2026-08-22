@@ -205,8 +205,8 @@ export default function VyxelLandingPage() {
           </div>
 
           <Reveal className="mb-20">
-            <div className="wrapper">
-              <div className="image-wrapper">
+            <div class="wrapper">
+              <div className="image-hover-wrapper">
                 <img src="/new_dashboard.png" alt="Dashboard Interface Preview" width="1200" height="675" className="block w-full h-auto rounded-3xl" /></div>
             </div>
           </Reveal>

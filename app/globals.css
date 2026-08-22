@@ -890,7 +890,7 @@ h2 em {
 
 .benefit-card {
   padding: 1.5rem;
-  border: 1px solid var(--border);
+  border: 2.5px solid var(--border);
   border-radius: 1.2rem;
   background: #fff;
 }
@@ -907,20 +907,20 @@ h2 em {
 }
 
 .benefit-card h3 {
-  font-size: 1.05rem;
+  font-size: 1.5rem;
 }
 
 .benefit-card p {
-  min-height: 70px;
+  min-height: 100px;
   margin: .65rem 0 1.5rem;
   color: #77736b;
-  font-size: .82rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .benefit-card strong {
   color: var(--primary);
-  font-size: .75rem;
+  font-size: 1rem;
 }
 
 .analytics-section {
@@ -1084,14 +1084,14 @@ h2 em {
 
 .price {
   margin: 1.7rem 0;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  letter-spacing: -.07em;
+  letter-spacing: -0.03em;
 }
 
 .price small {
   color: #77736b;
-  font-size: .7rem;
+  font-size: 2rem;
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -1165,6 +1165,7 @@ h2 em {
 }
 
 .cta-section .section-copy {
+  margin: 0 auto;
   color: #ffe5d5;
 }
 
@@ -1185,9 +1186,14 @@ h2 em {
   grid-template-columns: .7fr 1.3fr;
   max-width: 1160px;
   margin: 0 auto;
-  gap: 5rem;
+  column-gap: 5rem;
+  row-gap: 1.5rem;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
+}
+
+.faq-section > :first-child {
+  grid-column: 1 / -1;
 }
 
 .faq-intro .section-copy {
@@ -1226,8 +1232,11 @@ h2 em {
 }
 
 .wrapper {
-  position: relative;
-  width: 100%;
+  position: inherit;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 200ms ease-in-out;
 }
 
@@ -1239,11 +1248,11 @@ h2 em {
 }
 
 .wrapper img {
-  transition: all 200ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 .wrapper:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .faq-plus {
@@ -1613,7 +1622,7 @@ h2 em {
   }
 
   .benefit-card p {
-    min-height: auto;
+    min-height: 100px;
   }
 
   .analytics-card {
