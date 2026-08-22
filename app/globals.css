@@ -1051,7 +1051,9 @@ h2 em {
 
 .featured-price {
   border: 2px solid var(--primary);
-  box-shadow: 0 20px 50px #f875161a;
+  box-shadow: 0 25px 60px #f8751659, 0 10px 30px #17171714;
+  transform: scale(1.05);
+  z-index: 10;
 }
 
 .popular {
@@ -1060,10 +1062,12 @@ h2 em {
   right: 1.5rem;
   padding: .35rem .7rem;
   border-radius: 999px;
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
   font-size: .65rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
 }
 
 .price-card h3 {
@@ -1096,6 +1100,12 @@ h2 em {
   width: 100%;
 }
 
+.featured-price .button {
+  background: #fff;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
 .price-card ul {
   display: flex;
   flex-direction: column;
@@ -1116,6 +1126,10 @@ h2 em {
 
 .price-card li svg {
   width: 16px;
+  color: var(--muted-foreground);
+}
+
+.featured-price li svg {
   color: var(--primary);
 }
 

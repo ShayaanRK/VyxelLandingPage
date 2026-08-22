@@ -12,6 +12,12 @@ const CloseIcon = ({ size = 20 }) => <Icon size={size}><path d="m6 6 12 12M18 6 
 const ArrowIcon = ({ size = 18 }) => <Icon size={size}><path d="M5 12h14M13 6l6 6-6 6" /></Icon>;
 const PlayIcon = ({ size = 20 }) => <Icon size={size}><circle cx="12" cy="12" r="10" /><path d="m10 8 5 4-5 4z" fill="currentColor" stroke="none" /></Icon>;
 const CheckIcon = ({ size = 18 }) => <Icon size={size}><circle cx="12" cy="12" r="10" /><path d="m9 12 2 2 4-4" /></Icon>;
+const PriceCheckIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>
+);
 const SparkleIcon = ({ size = 22 }) => <Icon size={size}><path d="m12 3-1.3 5.2a3 3 0 0 1-2.2 2.2L3 12l5.5 1.6a3 3 0 0 1 2.2 2.2L12 21l1.3-5.2a3 3 0 0 1 2.2-2.2L21 12l-5.5-1.6a3 3 0 0 1-2.2-2.2z" /></Icon>;
 const UsersIcon = ({ size = 22 }) => <Icon size={size}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M16 3.1a4 4 0 0 1 0 7.8M22 21v-2a4 4 0 0 0-3-3.9M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></Icon>;
 const IconChartColumn = ({ size = 22 }) => (
@@ -77,9 +83,9 @@ const FEATURES = [
 ];
 
 const PRICING_PLANS = [
-  { name: "Starter", blurb: "Perfect for small consultancies", price: "$59", features: ["3 users included", "Lead management", "Student pipeline", "Follow-up reminders", "Document management", "Mobile app", "Extra users @ $12/user/month"] },
-  { name: "Growth", blurb: "For growing agencies", price: "$119", badge: "Most Popular", features: ["10 users included", "Call logging", "Call recording", "WhatsApp integration", "Counselor dashboards", "Extra users @ $10/user/month"] },
-  { name: "Elite", blurb: "For large agencies", price: "$239", features: ["25 users included", "AI call summaries", "AI lead scoring", "Automation workflows", "Advanced analytics", "Multi-branch support", "Extra users @ $9/user/month"] },
+  { name: "Starter", blurb: "Perfect for small consultancies", price: "₹4,999", features: ["3 users included", "Lead management", "Student pipeline", "Follow-up reminders", "Document management", "Mobile app", "Extra users @ $12/user/month"] },
+  { name: "Growth", blurb: "For growing agencies", price: "₹9,999", badge: "Most Popular", features: ["10 users included", "Call logging", "Call recording", "WhatsApp integration", "Counselor dashboards", "Extra users @ $10/user/month"] },
+  { name: "Elite", blurb: "For large agencies", price: "₹19,999", features: ["25 users included", "AI call summaries", "AI lead scoring", "Automation workflows", "Advanced analytics", "Multi-branch support", "Extra users @ $9/user/month"] },
 ];
 
 const BENEFITS = [
@@ -249,6 +255,25 @@ export default function VyxelLandingPage() {
         </div>
       </section>
 
+      <section id="pricing" className="pricing-section section-grid"><Reveal direction="left" className="flex items-center gap-2 mb-6">
+        <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
+          <BarChart3 className="w-4 h-4" size={16} style={{ color: "#f87516" }} />
+        </div>
+        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#f87516" }}>
+          PRICING
+        </span>
+      </Reveal><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Simple plans.<br /><em>Built to scale.</em></h2><p className="section-copy">Choose the perfect plan that scales with your business. No hidden fees, cancel anytime.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.badge ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><PriceCheckIcon />{feature}</li>)}</ul></Reveal>)}</div>
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <button className="group flex items-center gap-2 font-bold transition-all" style={{ color: "var(--primary)" }}>
+            Compare all features
+            <span className="transition-transform group-hover:translate-x-2">→</span>
+          </button>
+          <p className="text-xs font-medium uppercase tracking-widest opacity-40">
+            Secure checkout powered by Stripe
+          </p>
+        </div>
+      </section>
+
       <section className="benefits-section section-grid">
         <Reveal direction="left" className="flex items-center gap-2 mb-6">
           <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
@@ -267,8 +292,6 @@ export default function VyxelLandingPage() {
           const BenefitIcon = benefit.icon;
           return <Reveal delay={index * 70} className="benefit-card" key={benefit.title}><div className="benefit-icon"><BenefitIcon /></div><h3>{benefit.title}</h3><p>{benefit.desc}</p><strong>{benefit.stat}</strong></Reveal>;
         })}</div></section>
-
-      <section id="pricing" className="pricing-section section-grid"><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Why leading consultancies<br /><em>Choose Vyxel</em></h2><p className="section-copy">Get full access for 14 days with no credit card required. Choose the plan that fits your consultancy and grow without added complexity.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.highlighted ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><CheckIcon />{feature}</li>)}</ul></Reveal>)}</div></section>
 
       <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="#pricing">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
         <div className="flex items-center gap-2">
