@@ -132,7 +132,7 @@ function Brand() {
   </a>;
 }
 
-function Button({ children, href = "#pricing", secondary = false, onClick }) {
+function Button({ children, href = "#", secondary = false, onClick }) {
   const props = { className: `button ${secondary ? "button-secondary" : ""}`, href, onClick };
   return href ? <a {...props}>{children}</a> : <button {...props}>{children}</button>;
 }
@@ -205,8 +205,8 @@ export default function VyxelLandingPage() {
           </div>
 
           <Reveal className="mb-20">
-            <div class="wrapper">
-              <div class="image-hover-wrapper">
+            <div className="wrapper">
+              <div className="image-hover-wrapper">
                 <img src="/new_dashboard.png" alt="Dashboard Interface Preview" width="1" height="1" className="block w-full h-auto rounded-3xl" /></div>
             </div>
           </Reveal>
@@ -257,7 +257,7 @@ export default function VyxelLandingPage() {
         <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#f87516" }}>
           PRICING
         </span>
-      </Reveal><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Simple plans.<br /><em>Built to scale.</em></h2><p className="section-copy">Choose the perfect plan that scales with your business. No hidden fees, cancel anytime.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.badge ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><PriceCheckIcon />{feature}</li>)}</ul></Reveal>)}</div>
+      </Reveal><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Simple plans.<br /><em>Built to scale.</em></h2><p className="section-copy">Choose the perfect plan that scales with your business. No hidden fees, cancel anytime.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.badge ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="https://vyxel.digi-wire.com/inquiry">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><PriceCheckIcon />{feature}</li>)}</ul></Reveal>)}</div>
         <div className="mt-16 flex flex-col items-center gap-4">
           <button className="group flex items-center gap-2 font-bold transition-all" style={{ color: "var(--primary)" }}>
             Compare all features
@@ -288,20 +288,30 @@ export default function VyxelLandingPage() {
           return <Reveal delay={index * 70} className="benefit-card" key={benefit.title}><div className="benefit-icon"><BenefitIcon /></div><h3>{benefit.title}</h3><p>{benefit.desc}</p><strong>{benefit.stat}</strong></Reveal>;
         })}</div></section>
 
-      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="https://vyxel.digi-wire.com/inquiry">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
-          <span>Start your free trial today</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
-          <span>30-day free trial</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
-          <span>Cancel anytime</span>
-        </div>
-      </div></section>
+      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="https://vyxel.digi-wire.com/inquiry">Book a Free Demo</Button>
+        <Button
+          href={null}
+          secondary
+          onClick={() => setVideoOpen(true)}
+        >
+          <PlayIcon />
+          Watch demo
+        </Button>
+      </div>
+      </Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+            <span>Start your free trial today</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+            <span>30-day free trial</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+            <span>Cancel anytime</span>
+          </div>
+        </div></section>
 
       <section id="faq" className="faq-section section-grid">
         <Reveal direction="up" className="flex items-center gap-2 mb-6">
