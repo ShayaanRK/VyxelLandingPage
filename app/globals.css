@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -566,7 +567,9 @@ h2 em {
   background: transparent;
   border: none;
   position: relative;
-  color: #f0f0f0;
+  color: #ffffff;
+  border-radius: 15%;
+  font-weight: bold;
   cursor: pointer;
   z-index: 1;
   padding: 10px 20px;
@@ -586,7 +589,7 @@ h2 em {
   bottom: 0;
   right: 0;
   z-index: -99999;
-  transition: all .4s;
+  transition: all .2s;
 }
 
 .get-started-btn::before {
@@ -594,14 +597,13 @@ h2 em {
   width: 100%;
   height: 100%;
   background: #f87516;
-  ;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .get-started-btn::after {
-  transform: translate(10px, 10px);
-  width: 25px;
-  height: 25px;
+  transform: translate(5px, 5px);
+  width: 15px;
+  height: 15px;
   background: #ff9b63;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -869,6 +871,8 @@ h2 em {
 .benefits-section {
   background: #fffdfa;
   text-align: center;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .benefits-section .section-copy {
@@ -1020,6 +1024,8 @@ h2 em {
 .pricing-section {
   text-align: center;
   background: #fffdfa;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .pricing-section .section-copy {
@@ -1117,6 +1123,8 @@ h2 em {
   text-align: center;
   background: var(--primary);
   color: #fff;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .cta-section::before {
@@ -1162,6 +1170,8 @@ h2 em {
   max-width: 1160px;
   margin: 0 auto;
   gap: 5rem;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .faq-intro .section-copy {

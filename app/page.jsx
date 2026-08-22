@@ -23,6 +23,50 @@ const TrendIcon = ({ size = 22 }) => <Icon size={size}><path d="M3 17 9 11l4 4 8
 const ChartIcon = ({ size = 22 }) => <Icon size={size}><path d="M4 19V5M4 19h16M8 16v-4M12 16V7M16 16v-6M20 16v-9" /></Icon>;
 const ShieldIcon = ({ size = 22 }) => <Icon size={size}><path d="M12 3 4 6v5c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z" /><path d="m9 12 2 2 4-4" /></Icon>;
 
+const FacebookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+const LinkedinIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden="true">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const SOCIAL_LINKS = [
+  { href: "https://www.facebook.com/digiwireglobal", label: "Facebook", SocialSvg: FacebookIcon },
+  { href: "https://www.linkedin.com/company/digi-wire/", label: "LinkedIn", SocialSvg: LinkedinIcon },
+  { href: "https://www.instagram.com/digiwireglobal/", label: "Instagram", SocialSvg: InstagramIcon },
+];
+
+function SocialLinks() {
+  return <div className="flex gap-3 mt-5">
+    {SOCIAL_LINKS.map(({ href, label, SocialSvg }) => (
+      <a
+        key={label}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className="p-2 rounded-lg border transition-all duration-300 hover:scale-110 hover:bg-white/10 hover:text-[#ff9d61]"
+        style={{ borderColor: "rgba(255, 157, 97, 0.25)", color: "#99958e" }}
+      >
+        <SocialSvg />
+      </a>
+    ))}
+  </div>;
+}
+
 const FEATURES = [
   { icon: SparkleIcon, title: "AI Lead Scoring", tag: "AI-POWERED", desc: "Identify high-intent students instantly using predictive behavioral modeling with 95% accuracy." },
   { icon: UsersIcon, title: "Lead Management", tag: "CENTRALIZED", desc: "Centralize inquiries in a searchable database with smart routing." },
@@ -46,11 +90,11 @@ const BENEFITS = [
 ];
 
 const FAQS = [
-  { q: "How quickly can we get started?", a: "Most teams are up and running the same day. Import your existing leads, invite your counsellors, and your branches are ready to go." },
-  { q: "Can Vyxel integrate with our existing systems?", a: "Yes — Vyxel connects with your email provider, WhatsApp Business, and calendar tools, and supports CSV import/export for everything else." },
-  { q: "What support do you provide?", a: "Every plan includes onboarding support and email support, with priority support and a dedicated account manager on higher tiers." },
-  { q: "Is our data secure?", a: "Yes. Vyxel is SOC 2 certified and built with role-based access control, encryption in transit and at rest, and full GDPR compliance." },
-  { q: "Do you offer a free trial?", a: "Yes — every plan includes a 30-day free trial, no credit card required, and you can cancel anytime." },
+  { q: "How quickly can we get started?", a: "Most teams are up and running within 24 hours. Our onboarding team will guide you through setup and ensure your team is trained on all features." },
+  { q: "Can Vyxel integrate with our existing systems?", a: "Yes! We offer integrations with email providers, communication tools, and custom API integrations. Our technical team can help with complex setups." },
+  { q: "What support do you provide?", a: "We offer 24/7 email support for all plans, priority support for Growth and Enterprise plans, and dedicated account managers for Enterprise customers." },
+  { q: "Is our data secure?", a: "Absolutely. We use enterprise-grade encryption, regular security audits, and comply with GDPR and data protection regulations." },
+  { q: "Do you offer a free trial?", a: "Yes! We offer a 14-day free trial of all features. Book a demo if you want a personalized walkthrough." },
 ];
 
 function Reveal({ children, className = "", delay = 0 }) {
@@ -77,7 +121,7 @@ function Reveal({ children, className = "", delay = 0 }) {
 }
 
 function Brand() {
-  return <a class="brand" href="#hero" aria-label="Vyxel home">
+  return <a className="brand" href="#hero" aria-label="Vyxel home">
     <img src="/vyxel_logo_2.svg" alt="Logo" style={{ height: "70px", width: "auto" }} />
   </a>;
 }
@@ -122,7 +166,7 @@ export default function VyxelLandingPage() {
       {/* ---------------------------------------------------------- */}
       {/* Analytics Section - UPDATED WITH CHART DATA */}
       {/* ---------------------------------------------------------- */}
-      <section className="relative py-16 md:py-20 overflow-hidden bg-white" id="analytics">
+      <section className="relative py-12 md:py-16 overflow-hidden bg-white" id="analytics">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -226,12 +270,34 @@ export default function VyxelLandingPage() {
 
       <section id="pricing" className="pricing-section section-grid"><Reveal><div className="eyebrow">Simple, transparent pricing</div><h2>Why leading consultancies<br /><em>Choose Vyxel</em></h2><p className="section-copy">Get full access for 14 days with no credit card required. Choose the plan that fits your consultancy and grow without added complexity.</p></Reveal><div className="pricing-grid">{PRICING_PLANS.map((plan, index) => <Reveal key={plan.name} delay={index * 80} className={`price-card ${plan.highlighted ? "featured-price" : ""}`}>{plan.badge && <span className="popular">{plan.badge}</span>}<h3>{plan.name}</h3><p>{plan.blurb}</p><div className="price">{plan.price}<small>/month</small></div><Button href="#contact">Get started</Button><ul>{plan.features.map((feature) => <li key={feature}><CheckIcon />{feature}</li>)}</ul></Reveal>)}</div></section>
 
-      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Join modern study abroad teams using Vyxel to turn student relationships into sustainable growth.</p><div className="hero-actions"><Button href="#pricing">Get started for free</Button><Button href="#faq" secondary>View product demo</Button></div></Reveal></section>
+      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="#pricing">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+          <span>Start your free trial today</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+          <span>30-day free trial</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
+          <span>Cancel anytime</span>
+        </div>
+      </div></section>
 
       <section id="faq" className="faq-section section-grid"><div className="faq-intro"><Reveal><div className="eyebrow">Questions, answered</div><h2>Everything you need<br /><em>to get started.</em></h2><p className="section-copy">Still curious? <a href="#contact">Talk to our team <ArrowIcon /></a></p></Reveal></div><div className="faq-list">{FAQS.map((faq, index) => <Reveal key={faq.q} delay={index * 60} className={`faq-item ${openFaq === index ? "is-open" : ""}`}><button onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>{faq.q}</span><span className="faq-plus">+</span></button><div className="faq-answer"><p>{faq.a}</p></div></Reveal>)}</div></section>
     </main>
 
-    <footer className="footer"><div className="footer-inner"><div><Brand /><p>AI-powered CRM for consultancies<br />that care about student success.</p></div><div className="footer-links"><div><b>Vyxel</b><a href="#features">Features Overview</a><a href="#pricing">Pricing</a><a href="#contact">Security</a><a href="#contact">Contact Us</a></div><div><b>Solutions</b><a href="#features">For Startups</a><a href="#features">For Small Business</a><a href="#features">For Mid Sized Business</a><a href="#features">SaaS</a></div><div><b>Resources</b><a href="#faq">Support</a><a href="#faq">Blog</a><a href="#faq">Customer Stories</a><a href="#faq">CRM Glossary</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
+    <footer className="footer"><div className="footer-inner"><div><img src="/vyxel_logo_black.png" alt="Logo" style={{ height: "70px", width: "auto" }} /><p>AI-powered CRM for consultancies<br />that care about student success.</p><SocialLinks /></div><div className="footer-links">
+      <div><b>PRODUCT</b>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Product</a>
+      </div>
+      <div><b>LEGAL</b>
+        <a href="#features">Privacy Policy</a>
+        <a href="#features">Terms Of Service</a>
+        <a href="#features">Refund Policy</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
     {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
   </div>;
 }
