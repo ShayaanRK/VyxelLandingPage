@@ -1051,7 +1051,7 @@ h2 em {
 
 .featured-price {
   border: 2px solid var(--primary);
-  box-shadow: 0 25px 60px #f8751659, 0 10px 30px #17171714;
+  box-shadow: 0 5px 20px #f8751645, 0 8px 15px #17171710;
   transform: scale(1.05);
   z-index: 10;
 }
@@ -1098,11 +1098,13 @@ h2 em {
 
 .price-card .button {
   width: 100%;
+  background: #fff;
+  color: var(--primary);
 }
 
 .featured-price .button {
-  background: #fff;
-  color: var(--primary);
+  background: var(--primary);
+  color: #fff;
   border-color: var(--primary);
 }
 
@@ -1223,6 +1225,27 @@ h2 em {
   font-weight: 700;
 }
 
+.wrapper {
+  position: relative;
+  width: 100%;
+  transition: all 200ms ease-in-out;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper img {
+  transition: all 200ms ease-in-out;
+}
+
+.wrapper:hover img {
+  transform: scale(1.08);
+}
+
 .faq-plus {
   color: var(--primary);
   font-size: 1.5rem;
@@ -1294,12 +1317,12 @@ h2 em {
 .footer-links b {
   margin-bottom: .3rem;
   color: #fff;
-  font-size: .75rem;
+  font-size: 1.3rem;
 }
 
 .footer-links a {
   color: #99958e;
-  font-size: .78rem;
+  font-size: 1rem;
 }
 
 .footer-links a:hover {

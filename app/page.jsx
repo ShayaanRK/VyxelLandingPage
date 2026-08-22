@@ -205,14 +205,9 @@ export default function VyxelLandingPage() {
           </div>
 
           <Reveal className="mb-20">
-            <div className="relative overflow-hidden border-0 shadow-2xl rounded-3xl bg-slate-100 inline-block w-full">
-              <img
-                src="/dashboard-preview.png"
-                alt="Dashboard Interface Preview"
-                width="1200"
-                height="675"
-                className="block w-full h-auto rounded-3xl"
-              />
+            <div className="wrapper">
+              <div className="image-wrapper">
+                <img src="/new_dashboard.png" alt="Dashboard Interface Preview" width="1200" height="675" className="block w-full h-auto rounded-3xl" /></div>
             </div>
           </Reveal>
 
@@ -284,8 +279,8 @@ export default function VyxelLandingPage() {
           </span>
         </Reveal>
         <Reveal>
-          <div className="eyebrow">Why consultancies choose Vyxel</div>
-          <h2>Everything you need to<br /><em>grow with confidence.</em></h2>
+          <div className="eyebrow">Everything you need to grow with confidence.</div>
+          <h2>Why leading consultancies <em>choose Vyxel.</em></h2>
           <p className="section-copy">Powerful tools, thoughtful automation, and the visibility your team needs to create better student outcomes.</p>
         </Reveal>
         <div className="benefit-grid">{BENEFITS.map((benefit, index) => {
@@ -293,7 +288,7 @@ export default function VyxelLandingPage() {
           return <Reveal delay={index * 70} className="benefit-card" key={benefit.title}><div className="benefit-icon"><BenefitIcon /></div><h3>{benefit.title}</h3><p>{benefit.desc}</p><strong>{benefit.stat}</strong></Reveal>;
         })}</div></section>
 
-      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="#pricing">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
+      <section id="contact" className="cta-section section-grid"><Reveal><div className="eyebrow light">Start your Vyxel journey today</div><h2>Transform your consultancy<br /><em>with Vyxel CRM.</em></h2><p className="section-copy light-copy">Get a personalized walkthrough and discover how Vyxel can revolutionize your lead management, boost conversions, and scale your operations.</p><div className="hero-actions"><Button href="https://vyxel.digi-wire.com/inquiry">Book a Free Demo</Button><Button href="#faq" secondary>Watch demo</Button></div></Reveal><div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center items-center text-sm" style={{ color: "#fff", opacity: 0.95, fontFamily: "'Manrope', sans-serif", fontWeight: 600, letterSpacing: "0.03em", textTransform: "uppercase", fontSize: "0.78rem" }}>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#fff", boxShadow: "0 0 8px rgba(255,255,255,0.75)" }} />
           <span>Start your free trial today</span>
@@ -308,19 +303,27 @@ export default function VyxelLandingPage() {
         </div>
       </div></section>
 
-      <section id="faq" className="faq-section section-grid"><div className="faq-intro"><Reveal><div className="eyebrow">Questions, answered</div><h2>Everything you need<br /><em>to get started.</em></h2><p className="section-copy">Still curious? <a href="#contact">Talk to our team <ArrowIcon /></a></p></Reveal></div><div className="faq-list">{FAQS.map((faq, index) => <Reveal key={faq.q} delay={index * 60} className={`faq-item ${openFaq === index ? "is-open" : ""}`}><button onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>{faq.q}</span><span className="faq-plus">+</span></button><div className="faq-answer"><p>{faq.a}</p></div></Reveal>)}</div></section>
+      <section id="faq" className="faq-section section-grid">
+        <Reveal direction="up" className="flex items-center gap-2 mb-6">
+          <div className="p-2 rounded-lg" style={{ background: "#f8751610" }}>
+            <BarChart3 className="w-4 h-4" size={16} style={{ color: "#f87516" }} />
+          </div>
+          <span className="text-sm font-bold uppercase tracking-widest" style={{ color: "#f87516" }}>
+            FAQ
+          </span>
+        </Reveal><div className="faq-intro"><Reveal><div className="eyebrow">Answers, without the fine print.</div><h2>Got questions?<br /><em>We've got answers.</em></h2><p className="section-copy">Everything you need to know - <a href="https://vyxel.digi-wire.com/inquiry">Talk to our team <ArrowIcon /></a></p></Reveal></div><div className="faq-list">{FAQS.map((faq, index) => <Reveal key={faq.q} delay={index * 60} className={`faq-item ${openFaq === index ? "is-open" : ""}`}><button onClick={() => setOpenFaq(openFaq === index ? null : index)} aria-expanded={openFaq === index}><span>{faq.q}</span><span className="faq-plus">+</span></button><div className="faq-answer"><p>{faq.a}</p></div></Reveal>)}</div></section>
     </main>
 
     <footer className="footer"><div className="footer-inner"><div><img src="/vyxel_logo_black.png" alt="Logo" style={{ height: "70px", width: "auto" }} /><p>AI-powered CRM for consultancies<br />that care about student success.</p><SocialLinks /></div><div className="footer-links">
       <div><b>PRODUCT</b>
-        <a href="#features">Features</a>
+        <a href="https://vyxel.digi-wire.com/features">Features</a>
         <a href="#pricing">Pricing</a>
-        <a href="#contact">Product</a>
+        <a href="https://vyxel.digi-wire.com/inquiry">Product</a>
       </div>
       <div><b>LEGAL</b>
-        <a href="#features">Privacy Policy</a>
-        <a href="#features">Terms Of Service</a>
-        <a href="#features">Refund Policy</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
+        <a href="https://vyxel.digi-wire.com/privacy">Privacy Policy</a>
+        <a href="https://vyxel.digi-wire.com/terms">Terms Of Service</a>
+        <a href="https://vyxel.digi-wire.com/refund">Refund Policy</a></div></div></div><div className="footer-bottom"><span>© 2026 Vyxel. All Rights Reserved.</span><span>Built for modern admissions teams.</span></div></footer>
     {videoOpen && <VideoModal onClose={() => setVideoOpen(false)} />}
   </div>;
 }
