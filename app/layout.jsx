@@ -6,6 +6,22 @@ export const metadata = {
   title: 'Vyxel - AI-Powered Student Relationship Management',
   description: 'Transform your study abroad consultancy with Vyxel - AI-powered lead management, student tracking, and workflow automation.',
   generator: 'v0.app',
+  openGraph: {
+    title: 'Vyxel - AI-Powered Student Relationship Management',
+    description: 'Transform your study abroad consultancy with Vyxel - AI-powered lead management, student tracking, and workflow automation.',
+    url: 'https://vyxel.digi-wire.com',
+    siteName: 'Vyxel',
+    images: [
+      {
+        url: './public/vyxel_logo_1.png',
+        width: 500,
+        height: 500,
+        alt: 'Vyxel Logo Preview',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
   icons: {
     icon: [
       {
